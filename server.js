@@ -27,9 +27,6 @@ app.use(express.static(__dirname + '/Public'));
 hbs.registerHelper('getCurrentYear', () => {
   return new Date().getFullYear();
 });
-hbs.registerHelper('fuck', () => {
-  return 'fuck!'
-})
 hbs.registerHelper('moronType', (text) => {
   return text.toUpperCase();
 });
@@ -37,9 +34,15 @@ hbs.registerHelper('moronType', (text) => {
 app.get('/', (req, res) => {
   res.render('home.hbs', {
     pageTitle: 'Home',
-    welcomeMessage: 'This is some shit right here~'
+    welcomeMessage: 'Here you are...'
   })
   // res.send('<h1>hello express, you are great!</h1>');
+});
+
+app.get('/projects', (req, res) =>{
+  res.render('projects.hbs', {
+    pageTitle: 'Projects'
+  })
 });
 
 app.get('/about', (req, res) => {
@@ -50,7 +53,7 @@ app.get('/about', (req, res) => {
 
 app.get('/bad', (req, res) => {
   res.send({
-    errorMessage: 'You did some bad shit'
+    errorMessage: 'WTF were you thinking?'
   });
 });
 
